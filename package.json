@@ -1,0 +1,22 @@
+{
+    "name": "miranda-tests",
+    "version": "1.0.0",
+    "description": "functional test for rooms and bookings",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest --watchAll --verbose --coverage"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Chihabhk/Miranda-functionality-Tests.git"
+    },
+    "author": "Chihab",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Chihabhk/Miranda-functionality-Tests/issues"
+    },
+    "homepage": "https://github.com/Chihabhk/Miranda-functionality-Tests#readme",
+    "devDependencies": {
+        "@types/jest": "^29.5.2"
+    }
+}
