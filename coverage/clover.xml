@@ -1,31 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1686665254691" clover="3.2.0">
-  <project timestamp="1686665254691" name="All files">
-    <metrics statements="22" coveredstatements="22" conditionals="4" coveredconditionals="4" methods="7" coveredmethods="6" elements="33" coveredelements="32" complexity="0" loc="22" ncloc="22" packages="1" files="1" classes="1"/>
+<coverage generated="1686695163206" clover="3.2.0">
+  <project timestamp="1686695163206" name="All files">
+    <metrics statements="33" coveredstatements="32" conditionals="11" coveredconditionals="10" methods="7" coveredmethods="6" elements="51" coveredelements="48" complexity="0" loc="33" ncloc="33" packages="1" files="1" classes="1"/>
     <file name="index.js" path="C:\Users\Admin\OneDrive\WorkSpace\Oxigyen\Miranda-tests\index.js">
-      <metrics statements="22" coveredstatements="22" conditionals="4" coveredconditionals="4" methods="7" coveredmethods="6"/>
-      <line num="2" count="22" type="stmt"/>
-      <line num="3" count="22" type="stmt"/>
-      <line num="8" count="9" type="stmt"/>
-      <line num="9" count="9" type="stmt"/>
-      <line num="10" count="9" type="stmt"/>
-      <line num="11" count="9" type="stmt"/>
-      <line num="12" count="9" type="stmt"/>
-      <line num="19" count="3" type="stmt"/>
-      <line num="20" count="3" type="stmt"/>
-      <line num="22" count="9" type="stmt"/>
-      <line num="29" count="3" type="stmt"/>
-      <line num="30" count="3" type="stmt"/>
-      <line num="35" count="2" type="stmt"/>
-      <line num="36" count="2" type="stmt"/>
-      <line num="37" count="6" type="stmt"/>
-      <line num="38" count="6" type="cond" truecount="2" falsecount="0"/>
-      <line num="42" count="1" type="stmt"/>
-      <line num="46" count="1" type="stmt"/>
-      <line num="50" count="1" type="stmt"/>
-      <line num="51" count="1" type="stmt"/>
-      <line num="52" count="1" type="stmt"/>
-      <line num="56" count="1" type="stmt"/>
+      <metrics statements="33" coveredstatements="32" conditionals="11" coveredconditionals="10" methods="7" coveredmethods="6"/>
+      <line num="2" count="101" type="cond" truecount="2" falsecount="0"/>
+      <line num="3" count="39" type="stmt"/>
+      <line num="4" count="62" type="cond" truecount="1" falsecount="1"/>
+      <line num="5" count="0" type="stmt"/>
+      <line num="7" count="62" type="stmt"/>
+      <line num="8" count="62" type="stmt"/>
+      <line num="14" count="25" type="stmt"/>
+      <line num="15" count="25" type="stmt"/>
+      <line num="16" count="25" type="stmt"/>
+      <line num="17" count="25" type="stmt"/>
+      <line num="18" count="25" type="stmt"/>
+      <line num="25" count="5" type="stmt"/>
+      <line num="26" count="5" type="stmt"/>
+      <line num="28" count="25" type="stmt"/>
+      <line num="35" count="5" type="stmt"/>
+      <line num="36" count="5" type="stmt"/>
+      <line num="42" count="41" type="stmt"/>
+      <line num="43" count="41" type="stmt"/>
+      <line num="44" count="204" type="stmt"/>
+      <line num="45" count="204" type="cond" truecount="2" falsecount="0"/>
+      <line num="49" count="18" type="stmt"/>
+      <line num="52" count="23" type="stmt"/>
+      <line num="56" count="5" type="stmt"/>
+      <line num="57" count="5" type="stmt"/>
+      <line num="58" count="5" type="stmt"/>
+      <line num="61" count="5" type="stmt"/>
+      <line num="62" count="5" type="stmt"/>
+      <line num="64" count="5" type="stmt"/>
+      <line num="65" count="5" type="stmt"/>
+      <line num="69" count="39" type="cond" truecount="2" falsecount="0"/>
+      <line num="71" count="5" type="stmt"/>
+      <line num="74" count="5" type="stmt"/>
+      <line num="78" count="1" type="stmt"/>
     </file>
   </project>
 </coverage>

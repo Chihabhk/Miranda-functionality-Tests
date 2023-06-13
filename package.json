@@ -4,7 +4,7 @@
     "description": "functional test for rooms and bookings",
     "main": "index.js",
     "scripts": {
-        "test": "jest --watchAll --verbose --coverage"
+        "test": "jest --watchAll "
     },
     "repository": {
         "type": "git",

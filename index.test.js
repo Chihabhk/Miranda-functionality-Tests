@@ -1,5 +1,4 @@
-const { Room, Booking } = require("./index.js");
-const today = new Date();
+const { Room } = require("./index.js");
 
 const rooms = [
     {
@@ -9,41 +8,71 @@ const rooms = [
         discount: "",
         bookings: [
             {
-                name: "Guest",
-                email: "guest@gmail.com",
-                checkIn: "10/02/2023",
-                checkOut: "16/02/2023",
+                name: "John Doe",
+                email: "johndoe@example.com",
+                checkIn: "03/02/2023",
+                checkOut: "06/02/2023",
             },
             {
-                name: "Guest",
-                email: "guest@gmail.com",
-                checkIn: "10/03/2023",
-                checkOut: "16/04/2023",
+                name: "Alice Smith",
+                email: "alicesmith@example.com",
+                checkIn: "12/02/2023",
+                checkOut: "15/02/2023",
             },
             {
-                name: "Guest",
-                email: "guest@gmail.com",
-                checkIn: "02/05/2023",
-                checkOut: "12/06/2023",
+                name: "Bob Johnson",
+                email: "bobjohnson@example.com",
+                checkIn: "22/02/2023",
+                checkOut: "26/02/2023",
+            },
+            {
+                name: "Emma Davis",
+                email: "emma.davis@example.com",
+                checkIn: "05/03/2023",
+                checkOut: "10/03/2023",
+            },
+            {
+                name: "Max Wilson",
+                email: "max.wilson@example.com",
+                checkIn: "18/03/2023",
+                checkOut: "22/03/2023",
             },
         ],
     },
 ];
 describe("Room isOccupied", () => {
-    it("Should return false when NOT occupied", () => {
+    it("isOccupied returns false when NOT occupied", () => {
         const room = new Room(rooms[0].name, rooms[0].bookings);
-        expect(room.isOccupied("1/05/2023")).toBeFalsy();
+        expect(room.isOccupied("11/03/2023")).toBeFalsy();
     });
 
-    it("Should return true when IS occupied", () => {
+    it("isOccupied returns true when IS occupied", () => {
         const room = new Room("Room 1", rooms[0].bookings);
-        expect(room.isOccupied("11/06/2023")).toBeTruthy();
+        expect(room.isOccupied("18/03/2023")).toBeTruthy();
     });
 });
 
 describe("Room occupancy percentage", () => {
-    it("Should return 0 when there is no booking in range", () => {
+    it("Should return 0% when there is no booking in range", () => {
         const room = new Room(rooms[0].name, rooms[0].bookings);
-        expect(room.occupancyPercentage("01/06/2023", "10/06/2023")).toEqual(0);
+        expect(room.occupancyPercentage("10/03/2023", "17/03/2023")).toEqual(0);
+    });
+    it("Should return 100% occupancy when fully booked", () => {
+        const room = new Room(rooms[0].name, rooms[0].bookings);
+        expect(room.occupancyPercentage("18/03/2023", "21/03/2023")).toEqual(
+            100
+        );
+    });
+    it("Should return the correct % for various booking dates ", () => {
+        const room = new Room(rooms[0].name, rooms[0].bookings);
+        expect(
+            room.occupancyPercentage("18/03/2023", "22/03/2023")
+        ).toBeCloseTo(80);
+        expect(
+            room.occupancyPercentage("09/03/2023", "21/03/2023")
+        ).toBeCloseTo(38.46);
+        expect(
+            room.occupancyPercentage("14/03/2023", "22/03/2023")
+        ).toBeCloseTo(44.44);
     });
 });
