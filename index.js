@@ -1,5 +1,7 @@
 function formatDate(date) {
-    if (date instanceof Date) {
+    if (!date) {
+        return date;
+    } else if (date instanceof Date) {
         return date;
     } else if (!date.includes("/")) {
         return date;
@@ -10,12 +12,13 @@ function formatDate(date) {
 }
 
 class Booking {
-    constructor(name, email, checkIn, checkOut, discount) {
+    constructor(name, email, checkIn, checkOut, discount, room) {
         this.name = name;
         this.email = email;
         this.checkIn = formatDate(checkIn);
         this.checkOut = formatDate(checkOut);
         this.discount = discount;
+        this.room = room;
     }
     getFee(roomDiscount, bookingDiscount) {}
 }
@@ -23,15 +26,7 @@ class Booking {
 class Room {
     constructor(name, bookings, rate, discount) {
         this.name = name;
-        this.bookings = bookings.map(
-            (booking) =>
-                new Booking(
-                    booking.name,
-                    booking.email,
-                    booking.checkIn,
-                    booking.checkOut
-                )
-        );
+        this.bookings = bookings;
         this.rate = rate;
         this.discount = discount;
     }
@@ -55,7 +50,7 @@ class Room {
     occupancyPercentage(startDate, endDate) {
         const formattedStartDate = formatDate(startDate);
         const formattedEndDate = formatDate(endDate);
-        const msToDays = 1000 * 60 * 60 * 24; //To s To minutes To days
+        const msToDays = 1000 * 60 * 60 * 24;
         //Returns integer number of days in the selected range(inclusive)
         const ocuppancyRange =
             1 + Math.floor((formattedEndDate - formattedStartDate) / msToDays);
@@ -72,6 +67,41 @@ class Room {
             ((occupiedDays * 100) / ocuppancyRange).toFixed(2)
         );
         return percentage;
+    }
+
+    static totalOccupancyPercentage(rooms, startDate, endDate) {
+        let totalOccupancy = 0;
+
+        for (const room of rooms) {
+            const roomOccupancyPercentage = room.occupancyPercentage(
+                startDate,
+                endDate
+            );
+            totalOccupancy += roomOccupancyPercentage;
+        }
+
+        return parseFloat((totalOccupancy / rooms.length).toFixed(2));
+    }
+
+    static availableRooms(rooms, startDate, endDate) {
+        let availableRooms = [];
+
+        for (const room of rooms) {
+            let isAvailable = true;
+            for (
+                let currentDay = formatDate(startDate);
+                currentDay <= formatDate(endDate);
+                currentDay.setDate(currentDay.getDate() + 1)
+            ) {
+                if (room.isOccupied(currentDay)) {
+                    isAvailable = false;
+                    break;
+                }
+            }
+            if (isAvailable) availableRooms.push(room);
+        }
+
+        return availableRooms;
     }
 }
 
