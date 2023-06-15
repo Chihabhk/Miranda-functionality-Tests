@@ -20,7 +20,15 @@ class Booking {
         this.discount = discount;
         this.room = room;
     }
-    getFee(roomDiscount, bookingDiscount) {}
+    getFee() {
+        const totalDiscount = (this.discount + this.room.discount) / 100;
+        return parseFloat(
+            (totalDiscount >= 0 && totalDiscount <= 1
+                ? this.room.rate * (1 - totalDiscount)
+                : 0
+            ).toFixed(2)
+        );
+    }
 }
 
 class Room {
@@ -32,8 +40,9 @@ class Room {
     }
 
     isOccupied(date) {
-        //en qué formato lo tengo que pasar? 14/02/1999
-        //todo: date es cualquier fecha del pasado? futuro? o del día de la consulta
+        /*
+         The check-out date is not considered as occupied.
+         */
         const formattedDate = formatDate(date);
         for (let i = 0; i < this.bookings.length; i++) {
             const booking = this.bookings[i];
@@ -63,10 +72,10 @@ class Room {
         ) {
             if (this.isOccupied(currentDay)) occupiedDays++;
         }
-        const percentage = parseFloat(
+        const occupancyPercentage = parseFloat(
             ((occupiedDays * 100) / ocuppancyRange).toFixed(2)
         );
-        return percentage;
+        return occupancyPercentage;
     }
 
     static totalOccupancyPercentage(rooms, startDate, endDate) {
@@ -80,7 +89,10 @@ class Room {
             totalOccupancy += roomOccupancyPercentage;
         }
 
-        return parseFloat((totalOccupancy / rooms.length).toFixed(2));
+        const totalOccupancyPercentage = parseFloat(
+            (totalOccupancy / rooms.length).toFixed(2)
+        );
+        return totalOccupancyPercentage;
     }
 
     static availableRooms(rooms, startDate, endDate) {
