@@ -1,13 +1,13 @@
 function formatDate(date) {
-    if (!date) {
-        return date;
-    } else if (date instanceof Date) {
+    if (date instanceof Date) {
         return date;
     } else if (!date.includes("/")) {
         return date;
-    } else {
+    } else if (!!date) {
         const dateParts = date.split("/");
         return new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
+    } else {
+        return;
     }
 }
 
